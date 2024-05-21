@@ -1,0 +1,31 @@
+{
+  "name": "carstenwindler/sustainability-workshop-example",
+  "description": "Example used in the sustainability workshop",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Carsten Windler",
+      "email": "carsten@carstenwindler.de"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "league/route": "^5.1",
+    "laminas/laminas-diactoros": "^3.3",
+    "league/container": "^4.2",
+    "laminas/laminas-httphandlerrunner": "^2.10",
+    "green-elephpant/carbon-aware": "^0.0.2",
+    "green-elephpant/code-bench": "^0.1.0",
+    "nyholm/psr7": "^1.8",
+    "kriswallsmith/buzz": "^1.2"
+
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "SustainabilityWorkshop\\": "src/"
+    }
+  }
+}
