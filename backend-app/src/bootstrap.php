@@ -63,7 +63,11 @@ $router->map(
 //
 $response = $router->dispatch($request);
 
+
+
 //
 // Finally send the response
 //
-(new Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
+(new Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit(
+    $response->withHeader('Access-Control-Allow-Origin', '*')
+);
