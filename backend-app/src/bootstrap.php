@@ -7,6 +7,7 @@ use GreenElephpant\CarbonAware\Service\CarbonAwareService;
 use Laminas\Diactoros\ResponseFactory;
 use SustainabilityWorkshop\CarbonAwareFactory;
 use SustainabilityWorkshop\Controller\CarbonIntensityController;
+use SustainabilityWorkshop\Controller\HealthCheckController;
 
 require_once '../vendor/autoload.php';
 
@@ -29,6 +30,8 @@ $container = new League\Container\Container();
 $container
     ->add(CarbonIntensityController::class)
     ->addArgument(CarbonAwareService::class);
+$container
+    ->add(HealthCheckController::class);
 
 $container
     ->add(
@@ -56,6 +59,12 @@ $router->map(
     'GET',
     '/carbon-intensity/current',
     [CarbonIntensityController::class, 'current']
+);
+
+$router->map(
+    'GET',
+    '/health-check',
+    [HealthCheckController::class, 'index']
 );
 
 //

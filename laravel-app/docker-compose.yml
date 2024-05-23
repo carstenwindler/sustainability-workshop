@@ -1,0 +1,23 @@
+services:
+  web:
+    image: nginx:stable
+    ports:
+      - "8081:80"
+    volumes:
+      - .:/app/
+      - ./build/web/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      # For troubleshooting with nginx, uncomment the below line
+      # - ./data/logs:/var/log/nginx
+    links:
+      - php
+
+  php:
+    env_file:
+      - build/env/local.env
+    user: "1000:1000"
+    build:
+      context: .
+      dockerfile: build/php/Dockerfile
+    volumes:
+      - .:/app/
+      - ./build/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
